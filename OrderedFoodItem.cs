@@ -1,13 +1,12 @@
-﻿using System;
+//==========================================================
+// Student Number : S10273376H, S10273736K
+// Student Name   : Zander Fernandez, Jacob Soon
+//==========================================================
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace gruberoo
 {
-
-
     public class OrderedFoodItem : FoodItem
     {
         public OrderedFoodItem() { }
@@ -33,7 +32,5 @@ namespace gruberoo
             return $"{ItemName} x{QtyOrdered}  ${ItemPrice:0.00}  Subtotal: ${SubTotal:0.00}  Customise: {Customise}";
         }
     }
-
-
-
 }
+
