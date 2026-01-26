@@ -22,11 +22,10 @@ namespace gruberoo
         public string ItemDesc { get; set; }
         public double ItemPrice { get; set; }
         public string Customise { get; set; }
-
         public override string ToString()
         {
-            // You can adjust formatting to match your expected output
-            return $"{ItemName} | {ItemDesc} | ${ItemPrice:0.00} | Customise: {Customise}";
+            return $"{ItemName} {ItemDesc} ${ItemPrice:0.00} Customise: {Customise}";
         }
     }
 }
+
