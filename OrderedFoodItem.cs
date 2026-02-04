@@ -4,36 +4,64 @@
 // Class done by  : Jacob Soon
 //==========================================================
 using System;
-using System.Collections.Generic;
 
 namespace GruberooFoodDelivery
 {
-    public class OrderedFoodItem : FoodItem
+    public class OrderedFoodItem
     {
-        public OrderedFoodItem() { }
+        private FoodItem foodItem;
+        private int qtyOrdered;
+        private double subTotal;
 
-        public OrderedFoodItem(string itemName, string itemDesc, double itemPrice, string customise, int qtyOrdered)
-            : base(itemName, itemDesc, itemPrice, customise)
+        // Properties
+        public FoodItem FoodItem
         {
-            QtyOrdered = qtyOrdered;
-            SubTotal = 0;
+            get { return foodItem; }
+            set { foodItem = value; }
         }
 
-        public int QtyOrdered { get; set; }
-        public double SubTotal { get; set; }
+        public int QtyOrdered
+        {
+            get { return qtyOrdered; }
+            set { qtyOrdered = value; }
+        }
 
+        public double SubTotal
+        {
+            get { return subTotal; }
+            set { subTotal = value; }
+        }
+
+        // Constructors
+        public OrderedFoodItem() { }
+
+        public OrderedFoodItem(int qtyOrdered, FoodItem foodItem)
+        {
+            this.qtyOrdered = qtyOrdered;
+            this.foodItem = foodItem;
+            this.subTotal = 0;
+        }
+
+        // Methods
         public double CalculateSubtotal()
         {
-            SubTotal = ItemPrice * QtyOrdered;
-            return SubTotal;
+            if (foodItem != null)
+            {
+                subTotal = foodItem.ItemPrice * qtyOrdered;
+            }
+            return subTotal;
         }
 
         public override string ToString()
         {
-            return $"{ItemName} x{QtyOrdered}  ${ItemPrice:0.00}  Subtotal: ${SubTotal:0.00}  Customise: {Customise}";
+            if (foodItem != null)
+            {
+                return foodItem.ItemName + " x" + qtyOrdered + " $" + foodItem.ItemPrice.ToString("0.00") + 
+                       " Subtotal: $" + subTotal.ToString("0.00");
+            }
+            return "Invalid OrderedFoodItem";
         }
     }
 }
-
 
 
