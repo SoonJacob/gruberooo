@@ -160,7 +160,7 @@ namespace GruberooFoodDelivery
                     }
 
                     // Build deliver
-                    string deliveryDateTime = order.DeliveryDate.ToString("dd/MM/yyyy") + " " + order.DeliveryTime;
+                    string deliveryDateTime = order.DeliveryDateTime.ToString("dd/MM/yyyy HH:mm");
 
                    
                     OrderDisplayInfo displayInfo = new OrderDisplayInfo();
@@ -168,8 +168,8 @@ namespace GruberooFoodDelivery
                     displayInfo.CustomerName = customer.Name;
                     displayInfo.RestaurantName = restaurantName;
                     displayInfo.DeliveryDateTime = deliveryDateTime;
-                    displayInfo.Amount = order.CalculateTotal();
-                    displayInfo.Status = order.Status;
+                    displayInfo.Amount = order.CalculateOrderTotal();
+                    displayInfo.Status = order.OrderStatus;
 
                     allOrders.Add(displayInfo);
                 }
