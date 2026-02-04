@@ -19,7 +19,6 @@ namespace GruberooFoodDelivery
         private string specialRequest;
         private string status;
         private List<OrderItem> orderItems;
-        private Payment payment;
 
         // Properties
         public int OrderId
