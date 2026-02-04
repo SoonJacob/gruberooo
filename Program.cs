@@ -33,33 +33,38 @@ namespace GruberooFoodDelivery
                 string choice = Console.ReadLine();
                 Console.WriteLine();
 
-                switch (choice)
+                if (choice == "1")
                 {
-                    case "1":
-                        ListAllRestaurantsAndMenuItems();
-                        break;
-                    case "2":
-                        ListAllOrders();
-                        break;
-                    case "3":
-                        Console.WriteLine("Feature 3 - Create a new order (Not yet implemented)");
-                        break;
-                    case "4":
-                        Console.WriteLine("Feature 4 - Process an order (Not yet implemented)");
-                        break;
-                    case "5":
-                        Console.WriteLine("Feature 5 - Modify an existing order (Not yet implemented)");
-                        break;
-                    case "6":
-                        Console.WriteLine("Feature 6 - Delete an existing order (Not yet implemented)");
-                        break;
-                    case "0":
-                        exit = true;
-                        Console.WriteLine("Thank you for using Gruberoo Food Delivery System!");
-                        break;
-                    default:
-                        Console.WriteLine("Invalid choice. Please try again.");
-                        break;
+                    ListAllRestaurantsAndMenuItems();
+                }
+                else if (choice == "2")
+                {
+                    ListAllOrders();
+                }
+                else if (choice == "3")
+                {
+                    Console.WriteLine("Feature 3 - Create a new order (Not yet implemented)");
+                }
+                else if (choice == "4")
+                {
+                    Console.WriteLine("Feature 4 - Process an order (Not yet implemented)");
+                }
+                else if (choice == "5")
+                {
+                    Console.WriteLine("Feature 5 - Modify an existing order (Not yet implemented)");
+                }
+                else if (choice == "6")
+                {
+                    Console.WriteLine("Feature 6 - Delete an existing order (Not yet implemented)");
+                }
+                else if (choice == "0")
+                {
+                    exit = true;
+                    Console.WriteLine("Thank you for using Gruberoo Food Delivery System!");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid choice. Please try again.");
                 }
 
                 if (!exit)
@@ -284,5 +289,8 @@ namespace GruberooFoodDelivery
             c3.AddOrder(order3);
             r2.AddOrder(order3);
         }
+    }
+}
+
     }
 }
