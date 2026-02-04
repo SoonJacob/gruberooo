@@ -1,11 +1,8 @@
-
-
 //==========================================================
 // Student Number : S10273376H, S10273736K
 // Student Name   : Zander Fernandez, Jacob Soon
-// Jacob soon did this
+// Class done by  : Jacob Soon
 //==========================================================
-
 using System;
 using System.Collections.Generic;
 
@@ -13,39 +10,36 @@ namespace GruberooFoodDelivery
 {
     class Restaurant
     {
-        
         private string restaurantId;
-        private string restaurantName;
-        private string restaurantEmail;
-
-       
-        private List<Menu> menus;
+        private string name;
+        private string email;
+        private List<FoodItem> menu;
         private List<SpecialOffer> specialOffers;
         private Queue<Order> orderQueue;
 
-       
+        // Properties
         public string RestaurantId
         {
             get { return restaurantId; }
             set { restaurantId = value; }
         }
 
-        public string RestaurantName
+        public string Name
         {
-            get { return restaurantName; }
-            set { restaurantName = value; }
+            get { return name; }
+            set { name = value; }
         }
 
-        public string RestaurantEmail
+        public string Email
         {
-            get { return restaurantEmail; }
-            set { restaurantEmail = value; }
+            get { return email; }
+            set { email = value; }
         }
 
-        public List<Menu> Menus
+        public List<FoodItem> Menu
         {
-            get { return menus; }
-            set { menus = value; }
+            get { return menu; }
+            set { menu = value; }
         }
 
         public List<SpecialOffer> SpecialOffers
@@ -60,108 +54,56 @@ namespace GruberooFoodDelivery
             set { orderQueue = value; }
         }
 
-       
+        // Constructors
         public Restaurant()
         {
-            menus = new List<Menu>();
+            menu = new List<FoodItem>();
             specialOffers = new List<SpecialOffer>();
             orderQueue = new Queue<Order>();
         }
 
-        public Restaurant(string restaurantId, string restaurantName, string restaurantEmail)
+        public Restaurant(string restaurantId, string name, string email)
         {
             this.restaurantId = restaurantId;
-            this.restaurantName = restaurantName;
-            this.restaurantEmail = restaurantEmail;
-            menus = new List<Menu>();
+            this.name = name;
+            this.email = email;
+            menu = new List<FoodItem>();
             specialOffers = new List<SpecialOffer>();
             orderQueue = new Queue<Order>();
         }
 
-        
-
-        
-        public void DisplayOrders()
+        // Methods
+        public void AddFoodItem(FoodItem foodItem)
         {
-            Console.WriteLine($"Orders for {restaurantName}:");
-            if (orderQueue.Count == 0)
-            {
-                Console.WriteLine("No orders in the queue.");
-                return;
-            }
-
-            foreach (Order order in orderQueue)
-            {
-                Console.WriteLine(order);
-            }
+            menu.Add(foodItem);
         }
-
-        
-        public void DisplaySpecialOffers()
-        {
-            Console.WriteLine($"Special offers for {restaurantName}:");
-            if (specialOffers.Count == 0)
-            {
-                Console.WriteLine("No special offers available.");
-                return;
-            }
-
-            foreach (SpecialOffer offer in specialOffers)
-            {
-                Console.WriteLine(offer);
-            }
-        }
-
-       
-        public void DisplayMenu()
-        {
-            Console.WriteLine($"Menus for {restaurantName}:");
-            if (menus.Count == 0)
-            {
-                Console.WriteLine("No menus found.");
-                return;
-            }
-
-            foreach (Menu menu in menus)
-            {
-                Console.WriteLine(menu);      
-                menu.DisplayFoodItems();      
-                Console.WriteLine();
-            }
-        }
-
-        
-        public void AddMenu(Menu menu)
-        {
-            if (menu == null) return;
-            menus.Add(menu);
-        }
-
-       
-        public bool RemoveMenu(Menu menu)
-        {
-            if (menu == null) return false;
-            return menus.Remove(menu);
-        }
-
-        // EXTRA HELPERS just in case
 
         public void AddSpecialOffer(SpecialOffer offer)
         {
-            if (offer == null) return;
             specialOffers.Add(offer);
         }
 
         public void AddOrder(Order order)
         {
-            if (order == null) return;
             orderQueue.Enqueue(order);
         }
 
-        
+        public FoodItem GetFoodItemByName(string itemName)
+        {
+            foreach (FoodItem item in menu)
+            {
+                if (item.ItemName.Equals(itemName, StringComparison.OrdinalIgnoreCase))
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+
+        // ToString method
         public override string ToString()
         {
-            return $"Restaurant: {restaurantName} ({restaurantId}) - {restaurantEmail}";
+            return "Restaurant: " + name + " (" + restaurantId + ")";
         }
     }
 }
