@@ -219,6 +219,7 @@ namespace GruberooFoodDelivery
         }
 
         // Load sample data for demonstration
+        // Hardcoded just for stage 1 to demonstrate how it works, will link csv files later
         static void LoadSampleData()
         {
             // Create restaurants
